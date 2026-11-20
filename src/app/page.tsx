@@ -702,8 +702,7 @@ export default function ManagementTeamHomePage() {
           </div>
 
           <p className="text-[11px] text-slate-400">
-            © {new Date().getFullYear()} Management Team Card Club. All rights
-            reserved.
+            © 2026 Management Team Card Club. All rights reserved.
           </p>
 
           <div className="flex items-center gap-5 text-[11px] font-semibold text-slate-500">
