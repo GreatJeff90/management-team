@@ -83,7 +83,7 @@ const TESTIMONIALS = [
 const TIERS = [
   {
     name: "Standard Card",
-    price: "$64",
+    price: "$100",
     period: "/month",
     tagline: "Official digital fan card for everyday supporters.",
     featured: false,
@@ -97,7 +97,7 @@ const TIERS = [
   },
   {
     name: "Gold Card",
-    price: "$129",
+    price: "$200",
     period: "/month",
     tagline: "Priority access & physical embossed card for dedicated fans.",
     featured: true,
@@ -111,7 +111,7 @@ const TIERS = [
   },
   {
     name: "Platinum Card",
-    price: "$249",
+    price: "$300",
     period: "/month",
     tagline: "All-access VIP card for inner-circle superfans.",
     featured: false,
