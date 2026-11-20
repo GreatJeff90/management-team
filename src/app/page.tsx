@@ -796,33 +796,41 @@ export default function ManagementTeamHomePage() {
 
       {/* ================= MINIMALIST FOOTER ================= */}
       <footer className="border-t border-slate-100 py-10 px-5 sm:px-6 bg-white">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <Link href="/" className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-full bg-blue-950 text-white flex items-center justify-center">
-              <DeskLogoIcon className="w-3.5 h-3.5" />
-            </div>
-            <span className="text-sm font-extrabold text-blue-950">
-              Management <span className="text-orange-500">Team</span>
-            </span>
-          </Link>
+  <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+    <Link href="/" className="flex items-center gap-2.5">
+      <div className="w-7 h-7 rounded-full bg-blue-950 text-white flex items-center justify-center">
+        <DeskLogoIcon className="w-3.5 h-3.5" />
+      </div>
+      <span className="text-sm font-extrabold text-blue-950">
+        Management <span className="text-orange-500">Team</span>
+      </span>
+    </Link>
 
-          <p className="text-[11px] text-slate-400">
-            © 2026 Management Team Fan Club. All rights reserved.
-          </p>
+    <div className="flex flex-col items-center gap-1">
+      <p className="text-[11px] text-slate-400">
+        © 2026 Management Team Fan Club. All rights reserved.
+      </p>
+      <a
+        href="mailto:admin@managementteamdesk.com"
+        className="text-[11px] font-semibold text-blue-950 hover:text-orange-500 transition-colors"
+      >
+        admin@managementteamdesk.com
+      </a>
+    </div>
 
-          <div className="flex items-center gap-5 text-[11px] font-semibold text-slate-500">
-            <Link href="/pricing" className="hover:text-orange-500">
-              Cards
-            </Link>
-            <a href="#features" className="hover:text-orange-500">
-              Perks
-            </a>
-            <a href="#faqs" className="hover:text-orange-500">
-              Support
-            </a>
-          </div>
-        </div>
-      </footer>
+    <div className="flex items-center gap-5 text-[11px] font-semibold text-slate-500">
+      <Link href="/pricing" className="hover:text-orange-500">
+        Cards
+      </Link>
+      <a href="#features" className="hover:text-orange-500">
+        Perks
+      </a>
+      <a href="#faqs" className="hover:text-orange-500">
+        Support
+      </a>
+    </div>
+  </div>
+</footer>
     </div>
   );
 }

@@ -1037,33 +1037,41 @@ export default function PricingPage() {
 
       {/* ================= MINIMALIST FOOTER ================= */}
       <footer className="border-t border-slate-100 py-10 px-5 sm:px-6 bg-white">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <Link href="/" className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-full bg-blue-950 text-white flex items-center justify-center">
-              <DeskLogoIcon className="w-3.5 h-3.5" />
-            </div>
-            <span className="text-sm font-extrabold text-blue-950">
-              Management <span className="text-orange-500">Team</span>
-            </span>
-          </Link>
+  <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+    <Link href="/" className="flex items-center gap-2.5">
+      <div className="w-7 h-7 rounded-full bg-blue-950 text-white flex items-center justify-center">
+        <DeskLogoIcon className="w-3.5 h-3.5" />
+      </div>
+      <span className="text-sm font-extrabold text-blue-950">
+        Management <span className="text-orange-500">Team</span>
+      </span>
+    </Link>
 
-          <p className="text-[11px] text-slate-400">
-            © 2026 Management Team Fan Club. All rights reserved.
-          </p>
+    <div className="flex flex-col items-center gap-1">
+      <p className="text-[11px] text-slate-400">
+        © 2026 Management Team Fan Club. All rights reserved.
+      </p>
+      <a
+        href="mailto:admin@managementteamdesk.com"
+        className="text-[11px] font-semibold text-blue-950 hover:text-orange-500 transition-colors"
+      >
+        admin@managementteamdesk.com
+      </a>
+    </div>
 
-          <div className="flex items-center gap-5 text-[11px] font-semibold text-slate-500">
-            <Link href="/pricing" className="hover:text-orange-500">
-              Cards
-            </Link>
-            <Link href="/#features" className="hover:text-orange-500">
-              Perks
-            </Link>
-            <a href="#faqs" className="hover:text-orange-500">
-              Support
-            </a>
-          </div>
-        </div>
-      </footer>
+    <div className="flex items-center gap-5 text-[11px] font-semibold text-slate-500">
+      <Link href="/pricing" className="hover:text-orange-500">
+        Cards
+      </Link>
+      <Link href="/#features" className="hover:text-orange-500">
+        Perks
+      </Link>
+      <a href="#faqs" className="hover:text-orange-500">
+        Support
+      </a>
+    </div>
+  </div>
+</footer>
 
       {/* ================= MEMBER REGISTRATION MODAL ================= */}
       <AnimatePresence>
@@ -1296,8 +1304,16 @@ export default function PricingPage() {
               </h3>
 
               <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Thank you for your application, the admin will contact you.
-              </p>
+                Thank you for applying! Our team has received your details and will reach out
+                shortly to finalize your membership card. For immediate inquiries, contact{" "}
+                <a
+                    href="mailto:admin@managementteamdesk.com"
+                    className="font-semibold text-blue-950 underline decoration-orange-500 hover:text-orange-600"
+                >
+                    admin@managementteamdesk.com
+                </a>
+                .
+                </p>
 
               <button
                 type="button"
