@@ -7,15 +7,10 @@ import {
   ArrowRight,
   ChevronRight,
   Check,
-  ShieldCheck,
-  Layers,
-  Crown,
   Flame,
   Plus,
   Minus,
-  BarChart3,
   MessageSquare,
-  PackageCheck,
 } from "lucide-react";
 
 // Minimalist Desk SVG Logo Icon
@@ -37,7 +32,7 @@ function DeskLogoIcon({ className = "w-5 h-5" }: { className?: string }) {
       {/* Right Drawer Unit */}
       <rect x="14" y="9" width="6" height="11" rx="1" />
       <line x1="14" y1="14.5" x2="20" y2="14.5" />
-      {/* Minimalist Monitor / Card Stand on Desk */}
+      {/* Minimalist Card Stand on Desk */}
       <path d="M8 9V6.5A1.5 1.5 0 0 1 9.5 5h2A1.5 1.5 0 0 1 13 6.5V9" />
     </svg>
   );
@@ -45,100 +40,100 @@ function DeskLogoIcon({ className = "w-5 h-5" }: { className?: string }) {
 
 const TESTIMONIALS = [
   {
-    id: "psa",
-    brand: "PSA VAULT",
-    headline: "Quick and Easy Setup",
+    id: "vipclub",
+    brand: "BACKSTAGE",
+    headline: "Instant Digital & Physical Pass",
     quote:
-      "“We’ve scaled to thousands of member card allocations monthly—Management Team’s tier dashboard is the only thing that keeps our drops sane.”",
-    author: "Jude Byrd, Head Collector at Vault Partners",
+      "“Getting my numbered Platinum fan card in the mail felt special—and scanning my digital pass got me straight into the pre-sale queue.”",
+    author: "Jude Byrd, Founding Member #0142",
     initials: "JB",
   },
   {
-    id: "pokecenter",
-    brand: "CARDEX",
-    headline: "Zero Bot Interference",
+    id: "frontrow",
+    brand: "FRONT ROW",
+    headline: "No More Missing Out on Tickets",
     quote:
-      "“Gold and Platinum members actually get booster boxes at fair prices without fighting scalper bots on release morning.”",
-    author: "Elena Vance, TCG Portfolio Manager",
+      "“Gold and Platinum cardholders get early presale codes before the general public, so I finally secured front-row seats at face value.”",
+    author: "Elena Vance, Gold Cardholder",
     initials: "EV",
   },
   {
-    id: "slabhub",
-    brand: "SLABHUB",
-    headline: "Seamless Tier Upgrades",
+    id: "innercircle",
+    brand: "INNER CIRCLE",
+    headline: "Unmatched Fan Perks",
     quote:
-      "“Upgrading from Standard to Platinum unlocked private grail auctions and paid for itself on my very first vintage holo purchase.”",
-    author: "Marcus Thorne, Vintage WOTC Collector",
+      "“Upgrading to the Platinum membership card unlocked private livestream Q&As and signed merch drops that more than paid for the card.”",
+    author: "Marcus Thorne, Platinum Cardholder",
     initials: "MT",
   },
   {
-    id: "mintgrade",
-    brand: "MINTGRADE",
-    headline: "Instant Vault Tracking",
+    id: "fanpass",
+    brand: "FAN PASS",
+    headline: "Everything in One Wallet Pass",
     quote:
-      "“Every single card I buy goes straight into my digital vault with real-time population and price tracking.”",
-    author: "Sora Takahashi, High-End Trader",
+      "“My Apple Wallet membership card updates automatically with new presale codes, merch discounts, and VIP event invites.”",
+    author: "Sora Takahashi, Verified Supporter",
     initials: "ST",
   },
 ];
 
 const TIERS = [
   {
-    name: "Standard",
+    name: "Standard Card",
     price: "$9",
     period: "/month",
-    tagline: "Essential access for casual binder builders.",
+    tagline: "Official digital fan card for everyday supporters.",
     featured: false,
     badge: null,
     perks: [
-      "Verified raw singles & modern packs",
-      "5% member discount storewide",
-      "Standard tracked bubble-mailer shipping",
-      "Weekly restock email alerts",
+      "Numbered Digital Fan Membership Card",
+      "5% member discount on official merch",
+      "Access to members-only community feed",
+      "Early newsletter & announcement alerts",
     ],
   },
   {
-    name: "Gold",
+    name: "Gold Card",
     price: "$29",
     period: "/month",
-    tagline: "Built for active collectors & set completers.",
+    tagline: "Priority access & physical embossed card for dedicated fans.",
     featured: true,
     badge: "Most Popular",
     perks: [
-      "24-hour early access to booster box drops",
-      "12% member discount storewide",
-      "Free insured priority shipping",
-      "Entry into monthly PSA slab raffles",
+      "24-hour early presale access to tickets & drops",
+      "12% member discount on all official merch",
+      "Physical gold-foil membership card mailed to you",
+      "Entry into monthly signed merch raffles",
     ],
   },
   {
-    name: "Platinum",
+    name: "Platinum Card",
     price: "$79",
     period: "/month",
-    tagline: "VIP vault access for serious grail hunters.",
+    tagline: "All-access VIP card for inner-circle superfans.",
     featured: false,
-    badge: "VIP Access",
+    badge: "VIP Pass",
     perks: [
-      "Private vintage & PSA 10 grail auctions",
-      "20% member discount + 0% vault storage fees",
-      "1 guaranteed graded slab shipped monthly",
-      "Dedicated 1-on-1 card sourcing concierge",
+      "Private VIP meet-and-greet & soundcheck invites",
+      "20% merch discount + free priority shipping",
+      "Heavyweight metal Platinum card + welcome gift box",
+      "Dedicated VIP fan concierge & direct Q&A access",
     ],
   },
 ];
 
 const FAQS = [
   {
-    q: "Can I switch between Standard, Gold, and Platinum anytime?",
-    a: "Yes. You can upgrade immediately to unlock an upcoming booster drop or downgrade at the end of your current billing cycle with one click.",
+    q: "Can I upgrade my fan membership card tier anytime?",
+    a: "Yes. You can upgrade from Standard to Gold or Platinum anytime to immediately unlock upcoming presale windows, VIP drops, and physical card perks.",
   },
   {
-    q: "How do you guarantee Pokémon cards are authentic?",
-    a: "Every single card, booster box, and graded slab passes multi-point UV, weight, and print-pattern verification at our desk before entering member inventory.",
+    q: "Do I get both a digital and physical membership card?",
+    a: "Every member receives an instant digital membership card for Apple Wallet and Google Wallet. Gold and Platinum members also receive an engraved physical card shipped to their door.",
   },
   {
-    q: "What happens to cards stored in my digital vault?",
-    a: "Cards held in your vault are stored in a climate-controlled, fully insured facility. You can request physical delivery or trade them to other members anytime.",
+    q: "How do I use my card for ticket presales and merch discounts?",
+    a: "Your unique member ID printed on your card unlocks gated presale links, automatically applies your tier discount at checkout, and verifies your status at live events.",
   },
 ];
 
@@ -171,16 +166,16 @@ export default function ManagementTeamHomePage() {
               <span className="w-1 h-1 rounded-full bg-orange-500 mt-0.5" />
             </a>
             <a href="#process" className="hover:text-blue-950 transition-colors">
-              Process
+              How It Works
             </a>
             <a
               href="#features"
               className="hover:text-blue-950 transition-colors"
             >
-              Features
+              Card Perks
             </a>
             <a href="#pricing" className="hover:text-blue-950 transition-colors">
-              Memberships
+              Cards
             </a>
             <a href="#faqs" className="hover:text-blue-950 transition-colors">
               FAQs
@@ -192,7 +187,7 @@ export default function ManagementTeamHomePage() {
             href="#pricing"
             className="bg-blue-950 hover:bg-orange-500 text-white text-xs font-bold px-4 py-2 rounded-full transition-colors shadow-xs"
           >
-            View Plans
+            Get Your Card
           </a>
         </div>
       </header>
@@ -211,12 +206,12 @@ export default function ManagementTeamHomePage() {
               New
             </span>
             <span className="text-xs font-medium text-slate-600 flex items-center gap-1">
-              Unlock early Pokémon drops with{" "}
+              Unlock VIP presales & backstage access with{" "}
               <a
                 href="#pricing"
                 className="underline decoration-orange-500 font-semibold text-blue-950 hover:text-orange-600"
               >
-                Platinum Tier
+                Platinum Card
               </a>
               <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
             </span>
@@ -229,11 +224,11 @@ export default function ManagementTeamHomePage() {
             transition={{ duration: 0.45, delay: 0.05 }}
             className="text-4xl sm:text-6xl font-extrabold tracking-tight text-blue-950 leading-[1.12]"
           >
-            A card club that
+            A fan card that
             <br />
             works like a{" "}
             <span className="inline-block px-4 py-0.5 rounded-2xl bg-orange-50 border border-orange-200/80 text-orange-500">
-              Vault
+              VIP Pass
             </span>
           </motion.h1>
 
@@ -244,8 +239,9 @@ export default function ManagementTeamHomePage() {
             transition={{ duration: 0.45, delay: 0.1 }}
             className="mt-5 text-sm sm:text-base text-slate-500 max-w-lg mx-auto leading-relaxed"
           >
-            Serious collectors deserve a platform that does it all—from verified
-            singles and bot-free booster drops to tiered member rewards.
+            True supporters deserve more than a follow button—claim your official
+            fan membership card for early ticket presales, exclusive merch, and
+            inner-circle experiences.
           </motion.p>
 
           {/* Dual Pill CTA Buttons */}
@@ -260,7 +256,7 @@ export default function ManagementTeamHomePage() {
               className="inline-flex items-center gap-2 bg-blue-950 hover:bg-blue-900 text-white text-xs sm:text-sm font-bold px-6 py-3 rounded-full shadow-md shadow-blue-950/15 transition-all"
             >
               <Sparkles className="w-3.5 h-3.5 text-orange-400" />
-              Join Membership
+              Claim Membership Card
             </a>
             <a
               href="#features"
@@ -269,7 +265,7 @@ export default function ManagementTeamHomePage() {
               <span className="w-5 h-5 rounded-full bg-orange-500 text-white flex items-center justify-center text-[10px] font-black">
                 ★
               </span>
-              Browse Live Cards
+              Explore Member Perks
             </a>
           </motion.div>
         </div>
@@ -290,10 +286,10 @@ export default function ManagementTeamHomePage() {
             {/* Mini UI Mockup */}
             <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-2xs flex items-center justify-between">
               <span className="text-[11px] font-bold text-slate-400">
-                Tier Level
+                Card Edition
               </span>
               <span className="px-3.5 py-1.5 rounded-full bg-orange-500 text-white text-xs font-bold shadow-xs">
-                Select Tier
+                Choose Card
               </span>
             </div>
 
@@ -302,8 +298,8 @@ export default function ManagementTeamHomePage() {
                 STEP 1:
               </span>
               <p className="mt-1 text-sm text-slate-600 leading-snug">
-                Pick <strong className="text-blue-950">Standard, Gold,</strong>{" "}
-                or <strong className="text-blue-950">Platinum</strong> in
+                Pick your <strong className="text-blue-950">Standard, Gold,</strong>{" "}
+                or <strong className="text-blue-950">Platinum</strong> card in
                 seconds.
               </p>
             </div>
@@ -325,9 +321,9 @@ export default function ManagementTeamHomePage() {
                   <Flame className="w-3.5 h-3.5" />
                 </div>
                 <div className="text-[11px]">
-                  <p className="font-bold text-blue-950">Gold Drop Unlocked</p>
+                  <p className="font-bold text-blue-950">Gold Presale Unlocked</p>
                   <p className="text-slate-400 text-[10px]">
-                    151 Booster Bundle • $26.99
+                    World Tour VIP Seats • Early Code
                   </p>
                 </div>
               </div>
@@ -336,9 +332,9 @@ export default function ManagementTeamHomePage() {
                   <MessageSquare className="w-3 h-3" />
                 </div>
                 <div className="text-[11px]">
-                  <p className="font-bold text-blue-950">Slab Verified</p>
+                  <p className="font-bold text-blue-950">Card Activated</p>
                   <p className="text-slate-400 text-[10px]">
-                    PSA 10 Umbreon VMAX ready
+                    Member #0482 added to Wallet
                   </p>
                 </div>
               </div>
@@ -349,9 +345,9 @@ export default function ManagementTeamHomePage() {
                 STEP 2:
               </span>
               <p className="mt-1 text-sm text-slate-600 leading-snug">
-                Claim <strong className="text-blue-950">singles, boxes,</strong>{" "}
-                and <strong className="text-blue-950">graded slabs</strong> at
-                member rates.
+                Unlock <strong className="text-blue-950">presales, merch,</strong>{" "}
+                and <strong className="text-blue-950">private streams</strong>{" "}
+                instantly.
               </p>
             </div>
           </motion.div>
@@ -378,8 +374,8 @@ export default function ManagementTeamHomePage() {
                 STEP 3:
               </span>
               <p className="mt-1 text-sm text-slate-600 leading-snug">
-                <strong className="text-blue-950">Vault or ship</strong> your
-                cards and watch your collection grow.
+                <strong className="text-blue-950">Flash your pass</strong> online
+                or at events and rack up member rewards.
               </p>
             </div>
           </motion.div>
@@ -414,7 +410,7 @@ export default function ManagementTeamHomePage() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Interactive Partner / Collector Brand Bar */}
+          {/* Interactive Fan Experience Bar */}
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 items-center">
             {TESTIMONIALS.map((item, idx) => {
               const isSelected = idx === activeTestimonial;
@@ -439,18 +435,18 @@ export default function ManagementTeamHomePage() {
         </div>
       </section>
 
-      {/* ================= FEATURES SECTION ("HERE'S WHAT MANAGEMENT TEAM HELPS YOU MANAGE") ================= */}
+      {/* ================= FEATURES SECTION ("HERE'S WHAT MANAGEMENT TEAM HELPS YOU UNLOCK") ================= */}
       <section id="features" className="py-20 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
           <div className="text-center">
             <span className="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-950 text-[11px] font-bold border border-blue-100">
-              Features
+              Card Perks
             </span>
             <h2 className="mt-3 text-2xl sm:text-4xl font-extrabold tracking-tight text-blue-950">
-              Here’s what Management Team Helps You Manage
+              Here’s what Management Team Helps You Unlock
             </h2>
             <p className="mt-2 text-xs sm:text-sm text-slate-500">
-              So you can focus on completing master sets and hunting grails.
+              One official membership card that puts you first in line every time.
             </p>
           </div>
 
@@ -461,26 +457,26 @@ export default function ManagementTeamHomePage() {
               <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-2xs space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-extrabold text-blue-950">
-                    Upcoming Member Drops
+                    Upcoming Cardholder Drops
                   </span>
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-100 text-orange-600">
-                    Live Queue
+                    VIP Access
                   </span>
                 </div>
                 {[
                   {
-                    set: "Scarlet & Violet: Prismatic Evolutions",
+                    set: "2026 Arena Tour — Front-Row Presale",
                     tier: "Platinum First",
                     date: "Fri, 8:00 PM",
                   },
                   {
-                    set: "Japanese Terastal Festival Box",
+                    set: "Limited Signed Collector Hoodie Drop",
                     tier: "Gold & Platinum",
                     date: "Sun, 2:00 PM",
                   },
                   {
-                    set: "WOTC Base Set 1st Ed. Slab Lot",
-                    tier: "All Members",
+                    set: "Members-Only Acoustic Livestream & Q&A",
+                    tier: "All Cardholders",
                     date: "Tue, 6:00 PM",
                   },
                 ].map((drop) => (
@@ -503,11 +499,11 @@ export default function ManagementTeamHomePage() {
 
               <div className="mt-6">
                 <h3 className="text-base font-extrabold text-blue-950">
-                  Priority Drop Allocation
+                  Priority Presale & Merch Drops
                 </h3>
                 <p className="mt-1 text-xs text-slate-500 leading-relaxed">
-                  Your membership tier automatically reserves your spot in high-demand
-                  English and Japanese restocks.
+                  Your membership card unlocks gated ticket windows and limited
+                  merch runs before links go public.
                 </p>
               </div>
             </div>
@@ -517,35 +513,35 @@ export default function ManagementTeamHomePage() {
               <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-2xs">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-xs font-extrabold text-blue-950">
-                    Your Member Vault Stats
+                    Your Member Card Status
                   </span>
                   <span className="text-[10px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full">
-                    +18.4% Value
+                    Verified VIP
                   </span>
                 </div>
                 <div className="grid grid-cols-3 gap-2.5 text-center">
                   <div className="p-3 rounded-xl bg-blue-950 text-white">
-                    <p className="text-[10px] text-blue-200">Vaulted Cards</p>
-                    <p className="text-lg font-extrabold mt-0.5">142</p>
+                    <p className="text-[10px] text-blue-200">Member ID</p>
+                    <p className="text-lg font-extrabold mt-0.5">#0482</p>
                   </div>
                   <div className="p-3 rounded-xl bg-orange-500 text-white">
-                    <p className="text-[10px] text-orange-100">PSA 10 Slabs</p>
-                    <p className="text-lg font-extrabold mt-0.5">19</p>
+                    <p className="text-[10px] text-orange-100">Events Attended</p>
+                    <p className="text-lg font-extrabold mt-0.5">14</p>
                   </div>
                   <div className="p-3 rounded-xl bg-slate-100 text-blue-950">
-                    <p className="text-[10px] text-slate-500">Saved</p>
-                    <p className="text-lg font-extrabold mt-0.5">$640</p>
+                    <p className="text-[10px] text-slate-500">Merch Saved</p>
+                    <p className="text-lg font-extrabold mt-0.5">$320</p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-6">
                 <h3 className="text-base font-extrabold text-blue-950">
-                  Real-Time Portfolio & Vault Desk
+                  Digital & Physical Fan Credentials
                 </h3>
                 <p className="mt-1 text-xs text-slate-500 leading-relaxed">
-                  Track market prices, request insured shipping, or trade slabs
-                  instantly from your Management Team desk.
+                  Keep your scannable pass in Apple/Google Wallet and show off
+                  your personalized physical card anywhere.
                 </p>
               </div>
             </div>
@@ -558,13 +554,13 @@ export default function ManagementTeamHomePage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center">
             <span className="inline-block px-3 py-1 rounded-full bg-orange-50 text-orange-600 text-[11px] font-bold border border-orange-200/70">
-              Memberships
+              Membership Cards
             </span>
             <h2 className="mt-3 text-2xl sm:text-4xl font-extrabold tracking-tight text-blue-950">
-              Choose Your Membership Level
+              Choose Your Fan Membership Card
             </h2>
             <p className="mt-2 text-xs sm:text-sm text-slate-500">
-              Transparent monthly tiers. Upgrade, downgrade, or cancel anytime.
+              Simple monthly plans. Upgrade your card tier or cancel anytime.
             </p>
           </div>
 
@@ -637,7 +633,7 @@ export default function ManagementTeamHomePage() {
                       : "bg-blue-950 hover:bg-orange-500 text-white"
                   }`}
                 >
-                  Join {tier.name}
+                  Get {tier.name}
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
@@ -702,15 +698,15 @@ export default function ManagementTeamHomePage() {
           </div>
 
           <p className="text-[11px] text-slate-400">
-            © 2026 Management Team Card Club. All rights reserved.
+            © 2026 Management Team Fan Club. All rights reserved.
           </p>
 
           <div className="flex items-center gap-5 text-[11px] font-semibold text-slate-500">
             <a href="#pricing" className="hover:text-orange-500">
-              Memberships
+              Cards
             </a>
             <a href="#features" className="hover:text-orange-500">
-              Vault
+              Perks
             </a>
             <a href="#faqs" className="hover:text-orange-500">
               Support
