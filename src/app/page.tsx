@@ -12,6 +12,8 @@ import {
   Plus,
   Minus,
   MessageSquare,
+  Menu,
+  X,
 } from "lucide-react";
 
 // Minimalist Desk SVG Logo Icon
@@ -141,18 +143,19 @@ const FAQS = [
 export default function ManagementTeamHomePage() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-orange-500 selection:text-white">
       {/* ================= FLOATING PILL NAVBAR ================= */}
-      <header className="sticky top-4 z-50 px-4">
-        <div className="max-w-4xl mx-auto bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-lg shadow-blue-950/5 rounded-full px-4 py-2.5 flex items-center justify-between">
+      <header className="sticky top-3 sm:top-4 z-50 px-3 sm:px-4">
+        <div className="max-w-4xl mx-auto bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-lg shadow-blue-950/5 rounded-full px-3.5 sm:px-4 py-2 sm:py-2.5 flex items-center justify-between">
           {/* Minimalist Desk Logo + Name */}
-          <Link href="/" className="flex items-center gap-2.5 pl-1 group">
-            <div className="w-8 h-8 rounded-full bg-blue-950 text-white flex items-center justify-center group-hover:bg-orange-500 transition-colors">
-              <DeskLogoIcon className="w-4 h-4" />
+          <Link href="/" className="flex items-center gap-2 pl-0.5 group shrink-0">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-950 text-white flex items-center justify-center group-hover:bg-orange-500 transition-colors">
+              <DeskLogoIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
-            <span className="text-sm font-extrabold tracking-tight text-blue-950">
+            <span className="text-[13px] sm:text-sm font-extrabold tracking-tight text-blue-950">
               Management <span className="text-orange-500">Team</span>
             </span>
           </Link>
@@ -186,52 +189,126 @@ export default function ManagementTeamHomePage() {
             </a>
           </nav>
 
-          {/* Right Pill CTA */}
-          <Link
-            href="/pricing"
-            className="bg-blue-950 hover:bg-orange-500 text-white text-xs font-bold px-4 py-2 rounded-full transition-colors shadow-xs"
-          >
-            Get Your Card
-          </Link>
+          {/* Right Pill CTA + Mobile Menu Toggle */}
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <Link
+              href="/pricing"
+              className="bg-blue-950 hover:bg-orange-500 text-white text-[11px] sm:text-xs font-bold px-3.5 sm:px-4 py-2 rounded-full transition-colors shadow-xs whitespace-nowrap"
+            >
+              Get Your Card
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              aria-label="Toggle Menu"
+              className="md:hidden w-8 h-8 rounded-full border border-slate-200/80 bg-slate-50 text-blue-950 flex items-center justify-center hover:bg-slate-100 transition-colors"
+            >
+              {mobileMenuOpen ? (
+                <X className="w-4 h-4" />
+              ) : (
+                <Menu className="w-4 h-4" />
+              )}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Dropdown Drawer */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -8, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.98 }}
+              transition={{ duration: 0.18 }}
+              className="md:hidden max-w-4xl mx-auto mt-2 bg-white/98 backdrop-blur-md border border-slate-200/90 shadow-xl shadow-blue-950/10 rounded-3xl p-4"
+            >
+              <nav className="flex flex-col space-y-1 text-xs font-bold text-slate-600">
+                <Link
+                  href="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-3.5 py-2.5 rounded-2xl bg-orange-50/70 text-blue-950 flex items-center justify-between"
+                >
+                  <span>Start Here</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+                </Link>
+                <a
+                  href="#process"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-3.5 py-2.5 rounded-2xl hover:bg-slate-50 hover:text-blue-950 transition-colors"
+                >
+                  How It Works
+                </a>
+                <a
+                  href="#features"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-3.5 py-2.5 rounded-2xl hover:bg-slate-50 hover:text-blue-950 transition-colors"
+                >
+                  Card Perks
+                </a>
+                <Link
+                  href="/pricing"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-3.5 py-2.5 rounded-2xl hover:bg-slate-50 hover:text-blue-950 transition-colors"
+                >
+                  Cards & Pricing
+                </Link>
+                <a
+                  href="#faqs"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-3.5 py-2.5 rounded-2xl hover:bg-slate-50 hover:text-blue-950 transition-colors"
+                >
+                  FAQs
+                </a>
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       {/* ================= HERO SECTION ================= */}
-      <section className="pt-16 pb-14 px-6">
+      <section className="pt-10 sm:pt-16 pb-12 sm:pb-14 px-5 sm:px-6">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Top Announcement Pill */}
+          {/* Top Announcement Pill (Single-line on mobile) */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 p-1 pr-3.5 rounded-full bg-slate-50 border border-slate-200/80 shadow-2xs mb-7"
+            className="inline-flex items-center gap-2 p-1 pr-3 rounded-full bg-slate-50 border border-slate-200/80 shadow-2xs mb-6 sm:mb-7 max-w-full"
           >
-            <span className="px-2.5 py-0.5 rounded-full bg-blue-950 text-white text-[10px] font-extrabold tracking-wide">
+            <span className="px-2.5 py-0.5 rounded-full bg-blue-950 text-white text-[10px] font-extrabold tracking-wide shrink-0">
               New
             </span>
-            <span className="text-xs font-medium text-slate-600 flex items-center gap-1">
-              Unlock VIP presales & backstage access with{" "}
-              <Link
-                href="/pricing#cards"
-                className="underline decoration-orange-500 font-semibold text-blue-950 hover:text-orange-600"
-              >
-                Platinum Card
-              </Link>
-              <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-            </span>
+            <Link
+              href="/pricing#cards"
+              className="text-[11px] sm:text-xs font-medium text-slate-600 flex items-center gap-1 truncate"
+            >
+              <span className="sm:hidden truncate">
+                VIP presales open with{" "}
+                <span className="underline decoration-orange-500 font-semibold text-blue-950">
+                  Platinum Card
+                </span>
+              </span>
+              <span className="hidden sm:inline">
+                Unlock VIP presales & backstage access with{" "}
+                <span className="underline decoration-orange-500 font-semibold text-blue-950 hover:text-orange-600">
+                  Platinum Card
+                </span>
+              </span>
+              <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+            </Link>
           </motion.div>
 
-          {/* Bold Two-Line Headline with Highlighted Pill Word */}
+          {/* Balanced Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.05 }}
-            className="text-4xl sm:text-6xl font-extrabold tracking-tight text-blue-950 leading-[1.12]"
+            className="text-[32px] sm:text-6xl font-extrabold tracking-tight text-blue-950 leading-[1.16] sm:leading-[1.12] max-w-md sm:max-w-none mx-auto"
           >
-            A fan card that
-            <br />
+            A fan card that <br className="hidden sm:inline" />
             works like a{" "}
-            <span className="inline-block px-4 py-0.5 rounded-2xl bg-orange-50 border border-orange-200/80 text-orange-500">
+            <span className="inline-block px-3.5 sm:px-4 py-0.5 mt-1 sm:mt-0 rounded-xl sm:rounded-2xl bg-orange-50 border border-orange-200/80 text-orange-500">
               VIP Pass
             </span>
           </motion.h1>
@@ -241,30 +318,30 @@ export default function ManagementTeamHomePage() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.1 }}
-            className="mt-5 text-sm sm:text-base text-slate-500 max-w-lg mx-auto leading-relaxed"
+            className="mt-4 sm:mt-5 text-[13px] sm:text-base text-slate-500 max-w-sm sm:max-w-lg mx-auto leading-relaxed"
           >
             True supporters deserve more than a follow button—claim your official
             fan membership card for early ticket presales, exclusive merch, and
             inner-circle experiences.
           </motion.p>
 
-          {/* Dual Pill CTA Buttons */}
+          {/* Equal-Width Mobile Stacked / Desktop Inline CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: 0.15 }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-3"
+            className="mt-7 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 max-w-xs sm:max-w-none mx-auto"
           >
             <Link
               href="/pricing"
-              className="inline-flex items-center gap-2 bg-blue-950 hover:bg-blue-900 text-white text-xs sm:text-sm font-bold px-6 py-3 rounded-full shadow-md shadow-blue-950/15 transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-950 hover:bg-blue-900 text-white text-xs sm:text-sm font-bold px-6 py-3.5 sm:py-3 rounded-full shadow-md shadow-blue-950/15 transition-all"
             >
               <Sparkles className="w-3.5 h-3.5 text-orange-400" />
               Claim Membership Card
             </Link>
             <Link
               href="/pricing"
-              className="inline-flex items-center gap-2.5 bg-white hover:bg-slate-50 text-blue-950 border border-slate-200 text-xs sm:text-sm font-bold px-5 py-3 rounded-full shadow-2xs transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white hover:bg-slate-50 text-blue-950 border border-slate-200 text-xs sm:text-sm font-bold px-5 py-3.5 sm:py-3 rounded-full shadow-2xs transition-all"
             >
               <span className="w-5 h-5 rounded-full bg-orange-500 text-white flex items-center justify-center text-[10px] font-black">
                 ★
@@ -275,17 +352,17 @@ export default function ManagementTeamHomePage() {
         </div>
       </section>
 
-      {/* ================= 3 TILTED STEP CARDS SECTION ================= */}
-      <section id="process" className="py-12 px-6 overflow-hidden">
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Card 1 (Tilted Left) */}
+      {/* ================= 3 STEP CARDS SECTION ================= */}
+      <section id="process" className="py-10 sm:py-12 px-5 sm:px-6 overflow-hidden">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          {/* Card 1 */}
           <motion.div
-            initial={{ opacity: 0, y: 20, rotate: -2 }}
-            whileInView={{ opacity: 1, y: 0, rotate: -2 }}
-            whileHover={{ rotate: 0, y: -4 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -4 }}
             viewport={{ once: true }}
             transition={{ duration: 0.35 }}
-            className="bg-slate-50/90 border border-slate-200/70 rounded-3xl p-6 shadow-sm flex flex-col justify-between min-h-[250px]"
+            className="md:-rotate-2 md:hover:rotate-0 bg-slate-50/90 border border-slate-200/70 rounded-3xl p-5 sm:p-6 shadow-sm flex flex-col justify-between min-h-[210px] sm:min-h-[250px] transition-transform"
           >
             {/* Mini UI Mockup */}
             <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-2xs flex items-center justify-between">
@@ -300,7 +377,7 @@ export default function ManagementTeamHomePage() {
               </Link>
             </div>
 
-            <div className="mt-8">
+            <div className="mt-6 sm:mt-8">
               <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
                 STEP 1:
               </span>
@@ -312,18 +389,18 @@ export default function ManagementTeamHomePage() {
             </div>
           </motion.div>
 
-          {/* Card 2 (Straight Center) */}
+          {/* Card 2 */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             whileHover={{ y: -4 }}
             viewport={{ once: true }}
             transition={{ duration: 0.35, delay: 0.08 }}
-            className="bg-slate-50/90 border border-slate-200/70 rounded-3xl p-6 shadow-sm flex flex-col justify-between min-h-[250px]"
+            className="bg-slate-50/90 border border-slate-200/70 rounded-3xl p-5 sm:p-6 shadow-sm flex flex-col justify-between min-h-[210px] sm:min-h-[250px]"
           >
             {/* Mini Chat / Alert Pills */}
             <div className="space-y-2.5">
-              <div className="bg-white rounded-2xl p-3 border border-slate-100 shadow-2xs flex items-center gap-2.5 ml-4">
+              <div className="bg-white rounded-2xl p-3 border border-slate-100 shadow-2xs flex items-center gap-2.5 ml-3 sm:ml-4">
                 <div className="w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center shrink-0">
                   <Flame className="w-3.5 h-3.5" />
                 </div>
@@ -334,7 +411,7 @@ export default function ManagementTeamHomePage() {
                   </p>
                 </div>
               </div>
-              <div className="bg-white rounded-2xl p-3 border border-slate-100 shadow-2xs flex items-center gap-2.5 mr-4">
+              <div className="bg-white rounded-2xl p-3 border border-slate-100 shadow-2xs flex items-center gap-2.5 mr-3 sm:mr-4">
                 <div className="w-6 h-6 rounded-full bg-blue-950 text-white flex items-center justify-center shrink-0">
                   <MessageSquare className="w-3 h-3" />
                 </div>
@@ -359,14 +436,14 @@ export default function ManagementTeamHomePage() {
             </div>
           </motion.div>
 
-          {/* Card 3 (Tilted Right) */}
+          {/* Card 3 */}
           <motion.div
-            initial={{ opacity: 0, y: 20, rotate: 2 }}
-            whileInView={{ opacity: 1, y: 0, rotate: 2 }}
-            whileHover={{ rotate: 0, y: -4 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -4 }}
             viewport={{ once: true }}
             transition={{ duration: 0.35, delay: 0.16 }}
-            className="bg-slate-50/90 border border-slate-200/70 rounded-3xl p-6 shadow-sm flex flex-col justify-between min-h-[250px]"
+            className="md:rotate-2 md:hover:rotate-0 bg-slate-50/90 border border-slate-200/70 rounded-3xl p-5 sm:p-6 shadow-sm flex flex-col justify-between min-h-[210px] sm:min-h-[250px] transition-transform"
           >
             {/* Mini Bar Chart Mockup */}
             <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-2xs flex items-end justify-center gap-3 h-24">
@@ -376,7 +453,7 @@ export default function ManagementTeamHomePage() {
               <div className="w-4 h-10 rounded-t-md bg-blue-950" />
             </div>
 
-            <div className="mt-8">
+            <div className="mt-6 sm:mt-8">
               <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
                 STEP 3:
               </span>
@@ -390,7 +467,7 @@ export default function ManagementTeamHomePage() {
       </section>
 
       {/* ================= CENTERED TESTIMONIAL + LOGO SWITCHER ================= */}
-      <section className="py-16 px-6 border-y border-slate-100 bg-slate-50/30">
+      <section className="py-14 sm:py-16 px-5 sm:px-6 border-y border-slate-100 bg-slate-50/30">
         <div className="max-w-3xl mx-auto text-center">
           <AnimatePresence mode="wait">
             <motion.div
@@ -418,14 +495,14 @@ export default function ManagementTeamHomePage() {
           </AnimatePresence>
 
           {/* Interactive Fan Experience Bar */}
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 items-center">
+          <div className="mt-8 sm:mt-10 grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 items-center">
             {TESTIMONIALS.map((item, idx) => {
               const isSelected = idx === activeTestimonial;
               return (
                 <button
                   key={item.id}
                   onClick={() => setActiveTestimonial(idx)}
-                  className={`py-3 px-4 rounded-xl text-xs font-black tracking-wider transition-all relative ${
+                  className={`py-2.5 sm:py-3 px-3 sm:px-4 rounded-xl text-[11px] sm:text-xs font-black tracking-wider transition-all relative ${
                     isSelected
                       ? "bg-white text-blue-950 shadow-sm border border-slate-200/80"
                       : "text-slate-400 hover:text-blue-950"
@@ -442,8 +519,8 @@ export default function ManagementTeamHomePage() {
         </div>
       </section>
 
-      {/* ================= FEATURES SECTION ("HERE'S WHAT MANAGEMENT TEAM HELPS YOU UNLOCK") ================= */}
-      <section id="features" className="py-20 px-6 bg-white">
+      {/* ================= FEATURES SECTION ================= */}
+      <section id="features" className="py-16 sm:py-20 px-5 sm:px-6 bg-white">
         <div className="max-w-4xl mx-auto">
           <div className="text-center">
             <span className="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-950 text-[11px] font-bold border border-blue-100">
@@ -458,15 +535,15 @@ export default function ManagementTeamHomePage() {
           </div>
 
           {/* 2-Column Feature Dashboard Preview Cards */}
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="mt-10 sm:mt-12 grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             {/* Left Feature Card */}
-            <div className="rounded-3xl bg-slate-50 border border-slate-200/70 p-6 flex flex-col justify-between">
+            <div className="rounded-3xl bg-slate-50 border border-slate-200/70 p-5 sm:p-6 flex flex-col justify-between">
               <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-2xs space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-extrabold text-blue-950">
                     Upcoming Cardholder Drops
                   </span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-100 text-orange-600">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-100 text-orange-600 shrink-0">
                     VIP Access
                   </span>
                 </div>
@@ -489,15 +566,17 @@ export default function ManagementTeamHomePage() {
                 ].map((drop) => (
                   <div
                     key={drop.set}
-                    className="flex items-center justify-between py-2 border-t border-slate-100 text-xs"
+                    className="flex items-start sm:items-center justify-between gap-2 py-2 border-t border-slate-100 text-xs"
                   >
                     <div>
-                      <p className="font-bold text-blue-950">{drop.set}</p>
-                      <p className="text-[10px] text-orange-500 font-semibold">
+                      <p className="font-bold text-blue-950 leading-snug">
+                        {drop.set}
+                      </p>
+                      <p className="text-[10px] text-orange-500 font-semibold mt-0.5">
                         {drop.tier}
                       </p>
                     </div>
-                    <span className="text-[11px] font-medium text-slate-400">
+                    <span className="text-[10px] sm:text-[11px] font-medium text-slate-400 shrink-0">
                       {drop.date}
                     </span>
                   </div>
@@ -516,7 +595,7 @@ export default function ManagementTeamHomePage() {
             </div>
 
             {/* Right Feature Card */}
-            <div className="rounded-3xl bg-slate-50 border border-slate-200/70 p-6 flex flex-col justify-between">
+            <div className="rounded-3xl bg-slate-50 border border-slate-200/70 p-5 sm:p-6 flex flex-col justify-between">
               <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-2xs">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-xs font-extrabold text-blue-950">
@@ -526,18 +605,30 @@ export default function ManagementTeamHomePage() {
                     Verified VIP
                   </span>
                 </div>
-                <div className="grid grid-cols-3 gap-2.5 text-center">
-                  <div className="p-3 rounded-xl bg-blue-950 text-white">
-                    <p className="text-[10px] text-blue-200">Member ID</p>
-                    <p className="text-lg font-extrabold mt-0.5">#0482</p>
+                <div className="grid grid-cols-3 gap-2 text-center">
+                  <div className="p-2.5 sm:p-3 rounded-xl bg-blue-950 text-white">
+                    <p className="text-[9px] sm:text-[10px] text-blue-200">
+                      Member ID
+                    </p>
+                    <p className="text-base sm:text-lg font-extrabold mt-0.5">
+                      #0482
+                    </p>
                   </div>
-                  <div className="p-3 rounded-xl bg-orange-500 text-white">
-                    <p className="text-[10px] text-orange-100">Events Attended</p>
-                    <p className="text-lg font-extrabold mt-0.5">14</p>
+                  <div className="p-2.5 sm:p-3 rounded-xl bg-orange-500 text-white">
+                    <p className="text-[9px] sm:text-[10px] text-orange-100">
+                      Events
+                    </p>
+                    <p className="text-base sm:text-lg font-extrabold mt-0.5">
+                      14
+                    </p>
                   </div>
-                  <div className="p-3 rounded-xl bg-slate-100 text-blue-950">
-                    <p className="text-[10px] text-slate-500">Merch Saved</p>
-                    <p className="text-lg font-extrabold mt-0.5">$320</p>
+                  <div className="p-2.5 sm:p-3 rounded-xl bg-slate-100 text-blue-950">
+                    <p className="text-[9px] sm:text-[10px] text-slate-500">
+                      Saved
+                    </p>
+                    <p className="text-base sm:text-lg font-extrabold mt-0.5">
+                      $320
+                    </p>
                   </div>
                 </div>
               </div>
@@ -557,7 +648,7 @@ export default function ManagementTeamHomePage() {
       </section>
 
       {/* ================= MEMBERSHIP TIERS SECTION ================= */}
-      <section id="pricing" className="py-20 px-6 bg-slate-50/60">
+      <section id="pricing" className="py-16 sm:py-20 px-5 sm:px-6 bg-slate-50/60">
         <div className="max-w-4xl mx-auto">
           <div className="text-center">
             <span className="inline-block px-3 py-1 rounded-full bg-orange-50 text-orange-600 text-[11px] font-bold border border-orange-200/70">
@@ -571,11 +662,11 @@ export default function ManagementTeamHomePage() {
             </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="mt-10 sm:mt-12 grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
             {TIERS.map((tier) => (
               <div
                 key={tier.name}
-                className={`rounded-3xl p-7 flex flex-col justify-between transition-all ${
+                className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all ${
                   tier.featured
                     ? "bg-blue-950 text-white shadow-xl shadow-blue-950/20 ring-2 ring-orange-500"
                     : "bg-white text-blue-950 border border-slate-200/80 shadow-xs"
@@ -653,7 +744,7 @@ export default function ManagementTeamHomePage() {
               href="/pricing"
               className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-950 hover:text-orange-500 transition-colors"
             >
-              View annual discounts & full side-by-side card comparison
+              View annual discounts & full card comparison
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -661,9 +752,9 @@ export default function ManagementTeamHomePage() {
       </section>
 
       {/* ================= FAQS SECTION ================= */}
-      <section id="faqs" className="py-20 px-6 bg-white">
+      <section id="faqs" className="py-16 sm:py-20 px-5 sm:px-6 bg-white">
         <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-10">
+          <div className="text-center mb-8 sm:mb-10">
             <span className="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-950 text-[11px] font-bold">
               FAQs
             </span>
@@ -704,8 +795,8 @@ export default function ManagementTeamHomePage() {
       </section>
 
       {/* ================= MINIMALIST FOOTER ================= */}
-      <footer className="border-t border-slate-100 py-10 px-6 bg-white">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <footer className="border-t border-slate-100 py-10 px-5 sm:px-6 bg-white">
+        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <Link href="/" className="flex items-center gap-2.5">
             <div className="w-7 h-7 rounded-full bg-blue-950 text-white flex items-center justify-center">
               <DeskLogoIcon className="w-3.5 h-3.5" />
