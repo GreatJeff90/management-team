@@ -247,8 +247,8 @@ const CARD_TIERS = [
   {
     id: "standard",
     name: "Standard Card",
-    monthlyPrice: 9,
-    annualPrice: 7,
+    monthlyPrice: 64,
+    annualPrice: 51,
     tagline: "Official digital fan card for everyday supporters.",
     featured: false,
     badge: null,
@@ -267,8 +267,8 @@ const CARD_TIERS = [
   {
     id: "gold",
     name: "Gold Card",
-    monthlyPrice: 29,
-    annualPrice: 24,
+    monthlyPrice: 129,
+    annualPrice: 103,
     tagline: "Priority access & physical embossed card for dedicated fans.",
     featured: true,
     badge: "Most Popular",
@@ -287,8 +287,8 @@ const CARD_TIERS = [
   {
     id: "platinum",
     name: "Platinum Card",
-    monthlyPrice: 79,
-    annualPrice: 64,
+    monthlyPrice: 249,
+    annualPrice: 199,
     tagline: "All-access VIP card for inner-circle superfans.",
     featured: false,
     badge: "VIP Pass",
