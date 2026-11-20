@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Sparkles,
@@ -147,24 +148,24 @@ export default function ManagementTeamHomePage() {
       <header className="sticky top-4 z-50 px-4">
         <div className="max-w-4xl mx-auto bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-lg shadow-blue-950/5 rounded-full px-4 py-2.5 flex items-center justify-between">
           {/* Minimalist Desk Logo + Name */}
-          <a href="#" className="flex items-center gap-2.5 pl-1 group">
+          <Link href="/" className="flex items-center gap-2.5 pl-1 group">
             <div className="w-8 h-8 rounded-full bg-blue-950 text-white flex items-center justify-center group-hover:bg-orange-500 transition-colors">
               <DeskLogoIcon className="w-4 h-4" />
             </div>
             <span className="text-sm font-extrabold tracking-tight text-blue-950">
               Management <span className="text-orange-500">Team</span>
             </span>
-          </a>
+          </Link>
 
           {/* Center Navigation Links with Active Dot */}
           <nav className="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-500">
-            <a
-              href="#"
+            <Link
+              href="/"
               className="text-blue-950 relative flex flex-col items-center"
             >
               <span>Start Here</span>
               <span className="w-1 h-1 rounded-full bg-orange-500 mt-0.5" />
-            </a>
+            </Link>
             <a href="#process" className="hover:text-blue-950 transition-colors">
               How It Works
             </a>
@@ -174,21 +175,24 @@ export default function ManagementTeamHomePage() {
             >
               Card Perks
             </a>
-            <a href="#pricing" className="hover:text-blue-950 transition-colors">
-              Cards
-            </a>
+            <Link
+              href="/pricing"
+              className="hover:text-blue-950 transition-colors"
+            >
+              Cards & Pricing
+            </Link>
             <a href="#faqs" className="hover:text-blue-950 transition-colors">
               FAQs
             </a>
           </nav>
 
           {/* Right Pill CTA */}
-          <a
-            href="#pricing"
+          <Link
+            href="/pricing"
             className="bg-blue-950 hover:bg-orange-500 text-white text-xs font-bold px-4 py-2 rounded-full transition-colors shadow-xs"
           >
             Get Your Card
-          </a>
+          </Link>
         </div>
       </header>
 
@@ -207,12 +211,12 @@ export default function ManagementTeamHomePage() {
             </span>
             <span className="text-xs font-medium text-slate-600 flex items-center gap-1">
               Unlock VIP presales & backstage access with{" "}
-              <a
-                href="#pricing"
+              <Link
+                href="/pricing#cards"
                 className="underline decoration-orange-500 font-semibold text-blue-950 hover:text-orange-600"
               >
                 Platinum Card
-              </a>
+              </Link>
               <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
             </span>
           </motion.div>
@@ -251,22 +255,22 @@ export default function ManagementTeamHomePage() {
             transition={{ duration: 0.45, delay: 0.15 }}
             className="mt-8 flex flex-wrap items-center justify-center gap-3"
           >
-            <a
-              href="#pricing"
+            <Link
+              href="/pricing"
               className="inline-flex items-center gap-2 bg-blue-950 hover:bg-blue-900 text-white text-xs sm:text-sm font-bold px-6 py-3 rounded-full shadow-md shadow-blue-950/15 transition-all"
             >
               <Sparkles className="w-3.5 h-3.5 text-orange-400" />
               Claim Membership Card
-            </a>
-            <a
-              href="#features"
+            </Link>
+            <Link
+              href="/pricing"
               className="inline-flex items-center gap-2.5 bg-white hover:bg-slate-50 text-blue-950 border border-slate-200 text-xs sm:text-sm font-bold px-5 py-3 rounded-full shadow-2xs transition-all"
             >
               <span className="w-5 h-5 rounded-full bg-orange-500 text-white flex items-center justify-center text-[10px] font-black">
                 ★
               </span>
-              Explore Member Perks
-            </a>
+              Compare All Cards
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -288,9 +292,12 @@ export default function ManagementTeamHomePage() {
               <span className="text-[11px] font-bold text-slate-400">
                 Card Edition
               </span>
-              <span className="px-3.5 py-1.5 rounded-full bg-orange-500 text-white text-xs font-bold shadow-xs">
+              <Link
+                href="/pricing#cards"
+                className="px-3.5 py-1.5 rounded-full bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold shadow-xs transition-colors"
+              >
                 Choose Card
-              </span>
+              </Link>
             </div>
 
             <div className="mt-8">
@@ -626,7 +633,8 @@ export default function ManagementTeamHomePage() {
                   </ul>
                 </div>
 
-                <button
+                <Link
+                  href="/pricing#cards"
                   className={`mt-8 w-full py-3 rounded-full text-xs font-bold flex items-center justify-center gap-1.5 transition-all ${
                     tier.featured
                       ? "bg-orange-500 hover:bg-orange-600 text-white shadow-md shadow-orange-500/25"
@@ -635,9 +643,19 @@ export default function ManagementTeamHomePage() {
                 >
                   Get {tier.name}
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </Link>
               </div>
             ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link
+              href="/pricing"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-950 hover:text-orange-500 transition-colors"
+            >
+              View annual discounts & full side-by-side card comparison
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </div>
       </section>
@@ -688,23 +706,23 @@ export default function ManagementTeamHomePage() {
       {/* ================= MINIMALIST FOOTER ================= */}
       <footer className="border-t border-slate-100 py-10 px-6 bg-white">
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2.5">
+          <Link href="/" className="flex items-center gap-2.5">
             <div className="w-7 h-7 rounded-full bg-blue-950 text-white flex items-center justify-center">
               <DeskLogoIcon className="w-3.5 h-3.5" />
             </div>
             <span className="text-sm font-extrabold text-blue-950">
               Management <span className="text-orange-500">Team</span>
             </span>
-          </div>
+          </Link>
 
           <p className="text-[11px] text-slate-400">
             © 2026 Management Team Fan Club. All rights reserved.
           </p>
 
           <div className="flex items-center gap-5 text-[11px] font-semibold text-slate-500">
-            <a href="#pricing" className="hover:text-orange-500">
+            <Link href="/pricing" className="hover:text-orange-500">
               Cards
-            </a>
+            </Link>
             <a href="#features" className="hover:text-orange-500">
               Perks
             </a>
