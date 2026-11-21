@@ -248,7 +248,7 @@ const CARD_TIERS = [
     id: "standard",
     name: "Standard Card",
     monthlyPrice: 100,
-    annualPrice: 80,
+    annualPrice: 100,
     tagline: "Official digital fan card for everyday supporters.",
     featured: false,
     badge: null,
@@ -268,7 +268,7 @@ const CARD_TIERS = [
     id: "gold",
     name: "Gold Card",
     monthlyPrice: 200,
-    annualPrice: 160,
+    annualPrice: 200,
     tagline: "Priority access & physical embossed card for dedicated fans.",
     featured: true,
     badge: "Most Popular",
@@ -288,7 +288,7 @@ const CARD_TIERS = [
     id: "platinum",
     name: "Platinum Card",
     monthlyPrice: 300,
-    annualPrice: 240,
+    annualPrice: 300,
     tagline: "All-access VIP card for inner-circle superfans.",
     featured: false,
     badge: "VIP Pass",
@@ -404,9 +404,9 @@ const PRICING_FAQS = [
     a: "Your digital membership card is issued immediately upon checkout so you can add it to Apple Wallet or Google Wallet right away. Physical Gold and Platinum cards ship within 5–7 business days with tracking.",
   },
   {
-    q: "How does annual billing work?",
-    a: "Choosing annual billing saves you up to 20% compared to paying month-to-month, locks in your rate for 12 months, and ships your physical Gold or Platinum card immediately with no waiting period.",
-  },
+  q: "How does annual billing work?",
+  a: "Choosing annual billing locks in your membership rate for 12 months ($1,200, $2,400, or $3,600/yr) and ships your physical Gold or Platinum card immediately with no waiting period.",
+},
   {
     q: "What happens to my physical card if I upgrade or cancel?",
     a: "Your physical card is yours to keep as a collector's item. If you upgrade from Gold to Platinum, we’ll ship your new engraved metal Platinum card free of charge.",
@@ -700,18 +700,15 @@ export default function PricingPage() {
               Monthly
             </button>
             <button
-              onClick={() => setBillingCycle("annual")}
-              className={`px-4 sm:px-5 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-2 ${
-                billingCycle === "annual"
-                  ? "bg-blue-950 text-white shadow-xs"
-                  : "text-slate-500 hover:text-blue-950"
-              }`}
-            >
-              <span>Annual</span>
-              <span className="px-2 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-extrabold">
-                Save 20%
-              </span>
-            </button>
+  onClick={() => setBillingCycle("annual")}
+  className={`px-4 sm:px-5 py-2 rounded-full text-xs font-bold transition-all ${
+    billingCycle === "annual"
+      ? "bg-blue-950 text-white shadow-xs"
+      : "text-slate-500 hover:text-blue-950"
+  }`}
+>
+  Annual
+</button>
           </motion.div>
         </div>
       </section>
